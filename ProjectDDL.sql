@@ -5,8 +5,8 @@ firstName 		varchar(20) 	NOT NULL,
 lastName 		varchar(20) 	NOT NULL,
 birthDate 		date 			NOT NULL,
 phone 			varchar(10) 	NOT NULL,
-streetAddress 	varchar(20) 	NOT NULL,
-city 			varchar(20) 	NOT NULL,
+streetAddress 	varchar(50) 	NOT NULL,
+city 			varchar(50) 	NOT NULL,
 state 			varchar(2) 		NOT NULL,
 zipCode 		varchar(10) 	NOT NULL,
 constraint fk_State_Person foreign key (state) references State(state),
@@ -129,7 +129,7 @@ constraint pk_Technician primary key (technicianID)
 create table TechnicianTechnicialSkills
 (
 technicianID varchar(20) 		NOT NULL,
-skillName varchar(20),
+skillName varchar(20)			NOT NULL,
 constraint fk_Technician_TechnicianTechnicalSkills foreign key (technicianID) references Technician(technicianID),
 constraint fk_TechnicalSkills_TechncianTechnicalSkills foreign key (skillName) references TechnicalSkills(skillName),
 constraint pk_Technical_Skills primary key (technicianID,skillName)
@@ -208,10 +208,10 @@ create table Prescription
 patientID 		varchar(20) 	NOT NULL,
 physicianID 	varchar(20) 	NOT NULL,
 visitDate 		date 			NOT NULL,
-drugName 		varchar(20),
-units 			varchar(20),
-quantity 		int(5),
-pharmacistID 	varchar(20),
+drugName 		varchar(20)		NOT NULL,
+units 			varchar(20)		NOT NULL,
+quantity 		int(5)			NOT NULL,
+pharmacistID 	varchar(20)		NOT NULL,
 constraint fk_Visit_Prescription foreign key (patientID,physicianID,visitDate) references Visit(patientID,physicianID,visitDate),
 constraint fk_Inventory_Prescription foreign key (drugName,units) references Inventory(drugName,units),
 constraint fk_Pharmacist_Prescription foreign key (pharmacistID) references Pharmacist(pharmacistID),
@@ -247,7 +247,7 @@ constraint pk_Skill primary key (skillName)
 create table VolunteeerVolunteerSkills
 (
 volunteerID 	varchar(20) 	NOT NULL,
-skillName 		varchar(20),
+skillName 		varchar(20)		NOT NULL,
 constraint fk_Volunteer_VolunteerVolunteerSkills foreign key (volunteerID) references Volunteer(volunteerID),
 constraint fk_VolunteerSkills_VolunteerVolunteerSkills foreign key (skillName) references VolunteerSkills(skillName),
 constraint pk_VolunteerSkill primary key (volunteerID,skillName)
