@@ -331,52 +331,54 @@ insert into VolunteerSkills (skillName) values('Customer Service');
 
 # insert people
 insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('00001','Barbara','Streisand',10-23-1985,'7145558686','5898 Marian St','Cypress','CA','90630');
-insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('00002','Linda','Wringwald',06-17-1960,'5628809999','6161 Lee St','Cerritos','CA','90701');
+insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('00002','Linda','Wringwald',06-17-1960,'5628809999','6161 Lee St','Cerritos','CA','90703');
 insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('00003','Dave','Brown',10-10-1987,'3815559898','3434 Right Ln','Jacksonville','WY','83001');
-insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('00004','Stan','Smith',03-28-1990,'7142299562','1111 Beach Dr','Miami','FL','33101');
-insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('00005','Cathy','Streisand',09-13-1969,'9094056218','2323 ImWalkinHere St','New York City','NY','10001');
-insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('N12345','Barbara','Streisand',10-23-1985,'7145558686','5898 Marian St','Cypress','CA','90630');
-insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('N12345','Barbara','Streisand',10-23-1985,'7145558686','5898 Marian St','Cypress','CA','90630');
-insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('N12345','Barbara','Streisand',10-23-1985,'7145558686','5898 Marian St','Cypress','CA','90630');
-insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('N12345','Barbara','Streisand',10-23-1985,'7145558686','5898 Marian St','Cypress','CA','90630');
-insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('N12345','Barbara','Streisand',10-23-1985,'7145558686','5898 Marian St','Cypress','CA','90630');
-insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('N12345','Barbara','Streisand',10-23-1985,'7145558686','5898 Marian St','Cypress','CA','90630');
-insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('N12345','Barbara','Streisand',10-23-1985,'7145558686','5898 Marian St','Cypress','CA','90630');
-insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('N12345','Barbara','Streisand',10-23-1985,'7145558686','5898 Marian St','Cypress','CA','90630');
-insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('N12345','Barbara','Streisand',10-23-1985,'7145558686','5898 Marian St','Cypress','CA','90630');
-insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('N12345','Barbara','Streisand',10-23-1985,'7145558686','5898 Marian St','Cypress','CA','90630');
-insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('N12345','Barbara','Streisand',10-23-1985,'7145558686','5898 Marian St','Cypress','CA','90630');
-insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('N12345','Barbara','Streisand',10-23-1985,'7145558686','5898 Marian St','Cypress','CA','90630');
-insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('N12345','Barbara','Streisand',10-23-1985,'7145558686','5898 Marian St','Cypress','CA','90630');
-insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('N12345','Barbara','Streisand',10-23-1985,'7145558686','5898 Marian St','Cypress','CA','90630');
-insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('N12345','Barbara','Streisand',10-23-1985,'7145558686','5898 Marian St','Cypress','CA','90630');
-insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('N12345','Barbara','Streisand',10-23-1985,'7145558686','5898 Marian St','Cypress','CA','90630');
-insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('N12345','Barbara','Streisand',10-23-1985,'7145558686','5898 Marian St','Cypress','CA','90630');
-insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('N12345','Barbara','Streisand',10-23-1985,'7145558686','5898 Marian St','Cypress','CA','90630');
-insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('N12345','Barbara','Streisand',10-23-1985,'7145558686','5898 Marian St','Cypress','CA','90630');
-insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('N12345','Barbara','Streisand',10-23-1985,'7145558686','5898 Marian St','Cypress','CA','90630');
-insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('N12345','Barbara','Streisand',10-23-1985,'7145558686','5898 Marian St','Cypress','CA','90630');
-insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('N12345','Barbara','Streisand',10-23-1985,'7145558686','5898 Marian St','Cypress','CA','90630');
-insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('N12345','Barbara','Streisand',10-23-1985,'7145558686','5898 Marian St','Cypress','CA','90630');
-insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('N12345','Barbara','Streisand',10-23-1985,'7145558686','5898 Marian St','Cypress','CA','90630');
+insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('00004','Stan','Smith',03-28-1980,'7142299562','1111 Beach Dr','Miami','FL','33101');
+insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('00005','Cathy','Neudebocker',09-13-1969,'9094056218','2323 ImWalkinHere St','New York City','NY','10001');
+insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('00006','Arya','Stark',10-20-1985,'7145550202','6000 Flannigan St','Phoenix','AZ','85001');
+insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('00007','Sansa','Stark',09-24-1986,'7145550000','5555 Sherwock St','Montgomery','AL','36101');
+insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('00008','Jon','Snow',03-14-1970,'7145550001','1432 Elmo St','Detroit','MI','48201');
+insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('00009','Eddard','Stark',07-01-1955,'7145550002','4444 Candy Ln','Pittsburgh','PA','15201');
+insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('00010','Theon','Grayjoy',02-28-1988,'7145550003','3131 Huston St, Apt# 3','Houston','TX','77001');
+insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('00011','Tyrion','Lannister',07-05-1977,'7145550004','4000 Shady Oaks Dr','Anchorage','AK','99501');
+insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('00012','Tywin','Lannister',10-27-1979,'7145550005','1345 Jamboree St','Irvine','CA','92602');
+insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('00013','Jamie','Lannister',06-11-1984,'7145550006','6767 Applewood Ln','Denton','TX','76201');
+insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('00014','Cersie','Lannister',02-19-1980,'7145550007','6666 Sandy Toes Ave','Gilbert','AZ','85233');
+insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('00015','Robert','Baratheon',03-20-1981,'7145550008','13 Elm St','Boston','MA','02108');
+insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('00016','Stannis','Baratheon',04-23-1982,'7145550009','8989 Broadway Ave','New York City','NY','10001');
+insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('00017','Sterling','Archer',08-12-1980,'7145550010','9999 Danger Zone','Providence','RI','02901');
+insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('00018','Malory','Archer',09-01-1975,'7145550011','10010 Pacific Coast Highway','Newport Beach','CA','92658');
+insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('00019','Lana','Kane',03-05-1960,'7145550012','3333 Wildern St','Lynchburg','TN','37352');
+insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('00020','Cyril','Figgis',05-13-1964,'7145550013','2222 Sowma St','Boulder','CO','80301');
+insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('00021','Cheryl','Tunt',11-05-1974,'7145550014','4545 Atherton St','Long Beach','CA','90801');
+insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('00022','Pam','Poovey',12-25-1986,'7145550015','6890 Grindlay St','Las Vegas','NV','89101');
+insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('00023','Ray','Gilette',01-16-1972,'7145550016','5555 Belle St','Honolulu','HI','96813');
+insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('00024','James','Krieger',03-15-1940,'7145550017','1357 Cathy St','Denver','CO','80123');
+insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('00025','Phillip','Fry',05-23-1955,'7145550018','7878 Chapman Ave','Los Angeles','CA','90001');
+insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('00026','Bender','Rodriguez',04-08-1960,'7145550019','3434 Katella Ave','Lincoln','NE','68501');
+insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('00027','Turanga','Leela',11-01-1966,'7145550020','5123 Knott Ave','Los Angeles','CA','90001');
+insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('00028','Hermes','Conrad',04-27-1968,'7145550021','9642 Valley View St','Fullerton','CA','92831');
+insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('00029','Amy','Wong',10-04-1988,'7145550022','2345 Electric Ave','Salt Lake City','UT','84101');
 
 # insert employees
-# asuume hospital opened in 2000 so we don't need to worry about employees being too young
-insert into Employee(employeeID,hireDate) values ('',02-04-2005);
-insert into Employee(employeeID,hireDate) values ('',03-03-2002);
-insert into Employee(employeeID,hireDate) values ('',06-24-2008);
-insert into Employee(employeeID,hireDate) values ('',07-13-2003);
-insert into Employee(employeeID,hireDate) values ('',03-04-2005);
-insert into Employee(employeeID,hireDate) values ('',08-04-2008);
-insert into Employee(employeeID,hireDate) values ('',10-04-2004);
-insert into Employee(employeeID,hireDate) values ('',12-04-2007);
-insert into Employee(employeeID,hireDate) values ('',05-04-2007);
+# assume hospital opened in 2010 so we don't need to worry about employees being too young
+insert into Employee(employeeID,hireDate) values ('',02-04-2015);
+insert into Employee(employeeID,hireDate) values ('',03-03-2012);
+insert into Employee(employeeID,hireDate) values ('',06-24-2010);
+insert into Employee(employeeID,hireDate) values ('',07-13-2011);
+insert into Employee(employeeID,hireDate) values ('',03-04-2013);
+insert into Employee(employeeID,hireDate) values ('',08-04-2015);
+insert into Employee(employeeID,hireDate) values ('',10-04-2014);
+insert into Employee(employeeID,hireDate) values ('',12-04-2015);
+insert into Employee(employeeID,hireDate) values ('',05-04-2013);
 
 #insert nurses
 insert into Nurse(nurseID,certificate,careCenterName) values ('',true,'Cardiology');
 insert into Nurse(nurseID,certificate,careCenterName) values ('',false,'Cardiology');
 insert into Nurse(nurseID,certificate,careCenterName) values ('',true,'Oncology');
 insert into Nurse(nurseID,certificate,careCenterName) values ('',true,'Radiology');
+insert into Nurse(nurseID,certificate,careCenterName) values ('',true,'Radiology');
+insert into Nurse(nurseID,certificate,careCenterName) values ('',false,'Oncology');
 
 #insert registered nurses
 insert into RegisteredNurse(nurseID) values ('');
@@ -408,6 +410,7 @@ insert into Bed(patientID,careCenterName,roomNumber,bedNumber) values ('','Radio
 
 #insert staff
 insert into Staff(staffID,jobClass) values ('','Janitor');
+insert into Staff(staffID,jobClass) values ('','Janitor');
 insert into Staff(staffID,jobClass) values ('','Receptionist');
 
 #insert pharmcists
@@ -419,11 +422,15 @@ insert into Technician(technicianID) values ('');
 insert into Technician(technicianID) values ('');
 insert into Technician(technicianID) values ('');
 insert into Technician(technicianID) values ('');
+insert into Technician(technicianID) values ('');
+insert into Technician(technicianID) values ('');
 
 #insert technician-technicalskills
 insert into TechnicianTechnicialSkills(technicianID,skillName) values ('','Welding');
-insert into TechnicianTechnicialSkills(technicianID,skillName) values ('','HVAC');
 insert into TechnicianTechnicialSkills(technicianID,skillName) values ('','Welding');
+insert into TechnicianTechnicialSkills(technicianID,skillName) values ('','HVAC');
+insert into TechnicianTechnicialSkills(technicianID,skillName) values ('','HVAC');
+insert into TechnicianTechnicialSkills(technicianID,skillName) values ('','HVAC');
 insert into TechnicianTechnicialSkills(technicianID,skillName) values ('','Electrical');
 insert into TechnicianTechnicialSkills(technicianID,skillName) values ('','Electrical');
 insert into TechnicianTechnicialSkills(technicianID,skillName) values ('','Carpentry');
@@ -454,6 +461,7 @@ insert into Deceased(patientID,toeTag) values ('','01345');
 #insert resident patients
 insert into Resident(patientID,admittedDate) values ('',03-04-2013);
 insert into Resident(patientID,admittedDate) values ('',05-16-2014);
+insert into Resident(patientID,admittedDate) values ('',12-23-2015);
 
 #insert outpatients
 insert into Outpatient(patientID) values ('');
@@ -461,9 +469,10 @@ insert into Outpatient(patientID) values ('');
 insert into Outpatient(patientID) values ('');
 
 #insert visits
-insert into Visit(patientID,physicianID,visitDate,comments) values ('','',10-28-2014,'Patient had a dark red rash on forearm.');
+insert into Visit(patientID,physicianID,visitDate,comments) values ('','',10-28-2014,'Patient had a dark red rash on forearm. Told patient to wash forearm every 6 hours.');
 insert into Visit(patientID,physicianID,visitDate,comments) values ('','',11-07-2014,'Checkup. Patients rash has cleared up.');
 insert into Visit(patientID,physicianID,visitDate,comments) values ('','',09-27-2015,'Patient is experiencing dizziness and headaches.');
+insert into Visit(patientID,physicianID,visitDate,comments) values ('','',08-14-2014,'Patient is fainting. Having trouble with blood sugar levels.');
 
 #insert drugs into inventory
 insert into Inventory(drugName,units, inStock) values ('Ibuprofen','milligrams',true);
@@ -471,24 +480,24 @@ insert into Inventory(drugName,units, inStock) values ('Insulin','cubic centimet
 insert into Inventory(drugName,units, inStock) values ('Vicodin','milligrams',false);
 
 #insert prescriptions
-insert into Prescription(pharmacistID,patientID,physicianID,visitDate,drugName,units,quantity) values ('','','',03-08-2014,'Ibuprofen','milligrams','400');
-insert into Prescription(pharmacistID,patientID,physicianID,visitDate,drugName,units,quantity) values ('','','',03-13-2014,'Insulin','cubic centimeters','10');
-insert into Prescription(pharmacistID,patientID,physicianID,visitDate,drugName,units,quantity) values ('','','',05-27-2015,NULL,NULL,NULL);
+insert into Prescription(pharmacistID,patientID,physicianID,visitDate,drugName,units,quantity) values ('','','',09-27-2015,'Ibuprofen','milligrams','400');
+insert into Prescription(pharmacistID,patientID,physicianID,visitDate,drugName,units,quantity) values ('','','',08-14-2014,'Insulin','cubic centimeters','10');
+
 
 #insert physicians
 insert into Physician(physicianID,specialty,pagerNumber) values ('','Addiction','111');
 insert into Physician(physicianID,specialty,pagerNumber) values ('','Toxicology','222');
 insert into Physician(physicianID,specialty,pagerNumber) values ('','General','333');
-insert into Physician(physicianID,specialty,pagerNumber) values ('','Cardiovasular','444');
-insert into Physician(physicianID,specialty,pagerNumber) values ('','Gastrointestinal','555');
+insert into Physician(physicianID,specialty,pagerNumber) values ('00021','Cardiovasular','444');
+insert into Physician(physicianID,specialty,pagerNumber) values ('00022','Gastrointestinal','555');
 
 #insert surgeons
-insert into Surgeon(surgeonID) values ('');
-insert into Surgeon(surgeonID) values ('');
+insert into Surgeon(surgeonID) values ('00021');
+insert into Surgeon(surgeonID) values ('00022');
 
 #insert surgery
-insert into Surgery(surgeonID,patientID,surgeryDate,reason) values ('','',01-04-2013,'Removed appendix');
-insert into Surgery(surgeonID,patientID,surgeryDate,reason) values ('','',03-13-2014,'Heart bypass');
+insert into Surgery(surgeonID,patientID,surgeryDate,reason) values ('00022','',01-04-2013,'Removed appendix');
+insert into Surgery(surgeonID,patientID,surgeryDate,reason) values ('00021','',03-13-2014,'Heart bypass');
 
 #insert volunteers
 insert into Volunteer(volunteerID) values ('');
