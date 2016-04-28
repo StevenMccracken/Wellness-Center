@@ -322,7 +322,7 @@ insert into TechnicalSkills (skillName) values('Carpentry');
 insert into TechnicalSkills (skillName) values('Welding');
 
 #enumerate VolunteerSkills table
-insert into VolunteerSkills (skillName) values('CPR training');
+insert into VolunteerSkills (skillName) values('CPR Training');
 insert into VolunteerSkills (skillName) values('Leadership');
 insert into VolunteerSkills (skillName) values('Teamwork');
 insert into VolunteerSkills (skillName) values('Customer Service');
@@ -359,36 +359,40 @@ insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,ci
 insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('00027','Turanga','Leela',11-01-1966,'7145550020','5123 Knott Ave','Los Angeles','CA','90001');
 insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('00028','Hermes','Conrad',04-27-1968,'7145550021','9642 Valley View St','Fullerton','CA','92831');
 insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('00029','Amy','Wong',10-04-1988,'7145550022','2345 Electric Ave','Salt Lake City','UT','84101');
+insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('00030','Alfred','Hitchcock',12-04-1960,'7145550023','2333 Geode Rd','Los Angeles','CA','90001');
 
 # insert employees
 # assume hospital opened in 2010 so we don't need to worry about employees being too young
-insert into Employee(employeeID,hireDate) values ('',02-04-2015);
-insert into Employee(employeeID,hireDate) values ('',03-03-2012);
-insert into Employee(employeeID,hireDate) values ('',06-24-2010);
-insert into Employee(employeeID,hireDate) values ('',07-13-2011);
-insert into Employee(employeeID,hireDate) values ('',03-04-2013);
-insert into Employee(employeeID,hireDate) values ('',08-04-2015);
-insert into Employee(employeeID,hireDate) values ('',10-04-2014);
-insert into Employee(employeeID,hireDate) values ('',12-04-2015);
-insert into Employee(employeeID,hireDate) values ('',05-04-2013);
+insert into Employee(employeeID,hireDate) values ('00001',02-04-2015);
+insert into Employee(employeeID,hireDate) values ('00002',03-03-2012);
+insert into Employee(employeeID,hireDate) values ('00003',06-24-2010);
+insert into Employee(employeeID,hireDate) values ('00004',07-13-2011);
+insert into Employee(employeeID,hireDate) values ('00005',03-04-2013);
+insert into Employee(employeeID,hireDate) values ('00006',08-04-2015);
+insert into Employee(employeeID,hireDate) values ('00007',10-04-2014);
+insert into Employee(employeeID,hireDate) values ('00008',12-04-2015);
+insert into Employee(employeeID,hireDate) values ('00009',05-04-2013);
+insert into Employee(employeeID,hireDate) values ('00010',05-16-2014);
 
 #insert nurses
-insert into Nurse(nurseID,certificate,careCenterName) values ('',true,'Cardiology');
-insert into Nurse(nurseID,certificate,careCenterName) values ('',false,'Cardiology');
-insert into Nurse(nurseID,certificate,careCenterName) values ('',true,'Oncology');
-insert into Nurse(nurseID,certificate,careCenterName) values ('',true,'Radiology');
-insert into Nurse(nurseID,certificate,careCenterName) values ('',true,'Radiology');
-insert into Nurse(nurseID,certificate,careCenterName) values ('',false,'Oncology');
+insert into Nurse(nurseID,certificate,careCenterName) values ('00001',true,'Cardiology');
+insert into Nurse(nurseID,certificate,careCenterName) values ('00002',false,'Cardiology');
+insert into Nurse(nurseID,certificate,careCenterName) values ('00003',true,'Oncology');
+insert into Nurse(nurseID,certificate,careCenterName) values ('00004',true,'Radiology');
+insert into Nurse(nurseID,certificate,careCenterName) values ('00005',true,'Radiology');
+insert into Nurse(nurseID,certificate,careCenterName) values ('00006',false,'Oncology');
 
 #insert registered nurses
-insert into RegisteredNurse(nurseID) values ('');
-insert into RegisteredNurse(nurseID) values ('');
-insert into RegisteredNurse(nurseID) values ('');
+insert into RegisteredNurse(nurseID) values ('00001');
+insert into RegisteredNurse(nurseID) values ('00003');
+insert into RegisteredNurse(nurseID) values ('00004');
+insert into RegisteredNurse(nurseID) values ('00005');
 
 #insert care centers
-insert into CareCenter(headNurseID,careCenterLocation,careCenterName) values ('','West Wing','Cardiology');
-insert into CareCenter(headNurseID,careCenterLocation,careCenterName) values ('','East Wing','Oncology');
-insert into CareCenter(headNurseID,careCenterLocation,careCenterName) values ('','North Wing','Radiology');
+# 00004 is RN but is not head nurse
+insert into CareCenter(headNurseID,careCenterLocation,careCenterName) values ('00001','West Wing','Cardiology');
+insert into CareCenter(headNurseID,careCenterLocation,careCenterName) values ('00003','East Wing','Oncology');
+insert into CareCenter(headNurseID,careCenterLocation,careCenterName) values ('00005','North Wing','Radiology');
 
 #insert rooms
 insert into Room(careCenterName,roomNumber) values ('Cardiology',10010);
@@ -403,76 +407,81 @@ insert into Room(careCenterName,roomNumber) values ('Radiology',30022);
 
 #insert beds
 insert into Bed(patientID,careCenterName,roomNumber,bedNumber) values (NULL,'Cardiology',10010,385);
-insert into Bed(patientID,careCenterName,roomNumber,bedNumber) values ('','Cardiology',10010,400);
-insert into Bed(patientID,careCenterName,roomNumber,bedNumber) values ('','Oncology',30027,445);
-insert into Bed(patientID,careCenterName,roomNumber,bedNumber) values ('','Oncology',10030,221);
-insert into Bed(patientID,careCenterName,roomNumber,bedNumber) values ('','Radiology',30022,123);
+insert into Bed(patientID,careCenterName,roomNumber,bedNumber) values ('00019','Cardiology',10010,400);
+insert into Bed(patientID,careCenterName,roomNumber,bedNumber) values ('00020','Oncology',30027,445);
+insert into Bed(patientID,careCenterName,roomNumber,bedNumber) values ('00021','Oncology',10030,221);
+insert into Bed(patientID,careCenterName,roomNumber,bedNumber) values (NULL,'Radiology',30022,123);
 
 #insert staff
-insert into Staff(staffID,jobClass) values ('','Janitor');
-insert into Staff(staffID,jobClass) values ('','Janitor');
-insert into Staff(staffID,jobClass) values ('','Receptionist');
+insert into Staff(staffID,jobClass) values ('00007','Janitor');
+insert into Staff(staffID,jobClass) values ('00008','Janitor');
+insert into Staff(staffID,jobClass) values ('00009','Receptionist');
 
 #insert pharmcists
-insert into Pharmacist(pharmacistID) values ('');
-insert into Pharmacist(pharmacistID) values ('');
+insert into Pharmacist(pharmacistID) values ('00010');
+insert into Pharmacist(pharmacistID) values ('00011');
 
 #insert technicians
-insert into Technician(technicianID) values ('');
-insert into Technician(technicianID) values ('');
-insert into Technician(technicianID) values ('');
-insert into Technician(technicianID) values ('');
-insert into Technician(technicianID) values ('');
-insert into Technician(technicianID) values ('');
+insert into Technician(technicianID) values ('00012');
+insert into Technician(technicianID) values ('00013');
+insert into Technician(technicianID) values ('00014');
+insert into Technician(technicianID) values ('00015');
+insert into Technician(technicianID) values ('00016');
+insert into Technician(technicianID) values ('00017');
 
 #insert technician-technicalskills
-insert into TechnicianTechnicialSkills(technicianID,skillName) values ('','Welding');
-insert into TechnicianTechnicialSkills(technicianID,skillName) values ('','Welding');
-insert into TechnicianTechnicialSkills(technicianID,skillName) values ('','HVAC');
-insert into TechnicianTechnicialSkills(technicianID,skillName) values ('','HVAC');
-insert into TechnicianTechnicialSkills(technicianID,skillName) values ('','HVAC');
-insert into TechnicianTechnicialSkills(technicianID,skillName) values ('','Electrical');
-insert into TechnicianTechnicialSkills(technicianID,skillName) values ('','Electrical');
-insert into TechnicianTechnicialSkills(technicianID,skillName) values ('','Carpentry');
-insert into TechnicianTechnicialSkills(technicianID,skillName) values ('','Carpentry');
+# 00015 has no technical skills
+insert into TechnicianTechnicialSkills(technicianID,skillName) values ('00012','Welding');
+insert into TechnicianTechnicialSkills(technicianID,skillName) values ('00014','Welding');
+insert into TechnicianTechnicialSkills(technicianID,skillName) values ('00012','HVAC');
+insert into TechnicianTechnicialSkills(technicianID,skillName) values ('00013','HVAC');
+insert into TechnicianTechnicialSkills(technicianID,skillName) values ('00016','HVAC');
+insert into TechnicianTechnicialSkills(technicianID,skillName) values ('00014','Electrical');
+insert into TechnicianTechnicialSkills(technicianID,skillName) values ('00017','Electrical');
+insert into TechnicianTechnicialSkills(technicianID,skillName) values ('00017','Carpentry');
+insert into TechnicianTechnicialSkills(technicianID,skillName) values ('00016','Carpentry');
 
 #insert technician-lab
-insert into TechnicianLab(technicianID,labName) values ('','');
-insert into TechnicianLab(technicianID,labName) values ('','');
-insert into TechnicianLab(technicianID,labName) values ('','');
-insert into TechnicianLab(technicianID,labName) values ('','');
+# 00012 is assigned to Lab A and Lab B
+insert into TechnicianLab(technicianID,labName) values ('00012','Lab A');
+insert into TechnicianLab(technicianID,labName) values ('00013','Lab A');
+insert into TechnicianLab(technicianID,labName) values ('00014','Lab A');
+insert into TechnicianLab(technicianID,labName) values ('00012','Lab B');
+insert into TechnicianLab(technicianID,labName) values ('00015','Lab B');
+insert into TechnicianLab(technicianID,labName) values ('00016','Lab C');
+insert into TechnicianLab(technicianID,labName) values ('00017','Lab C');
 
 #insert labs
-insert into Laboratory(labName,headTechnicianID,labLocation) values ('','','West Wing');
-insert into Laboratory(labName,headTechnicianID,labLocation) values ('','','East Wing');
-insert into Laboratory(labName,headTechnicianID,labLocation) values ('','','North Wing');
+insert into Laboratory(labName,headTechnicianID,labLocation) values ('Lab A','00013','West Wing');
+insert into Laboratory(labName,headTechnicianID,labLocation) values ('Lab B','00012','East Wing');
+insert into Laboratory(labName,headTechnicianID,labLocation) values ('Lab C','00016','North Wing');
 
 #insert patients
-insert into Patient(patientID,contactDate,treatingPhysicianID) values ('',02-03-2010,'');
-insert into Patient(patientID,contactDate,treatingPhysicianID) values ('',02-23-2009,'');
-insert into Patient(patientID,contactDate,treatingPhysicianID) values ('',04-28-2000,'');
-insert into Patient(patientID,contactDate,treatingPhysicianID) values ('',07-17-2008,'');
-insert into Patient(patientID,contactDate,treatingPhysicianID) values ('',11-25-2011,'');
-insert into Patient(patientID,contactDate,treatingPhysicianID) values ('',05-03-2012,'');
+insert into Patient(patientID,contactDate,treatingPhysicianID) values ('00018',02-03-2010,'00025');
+insert into Patient(patientID,contactDate,treatingPhysicianID) values ('00019',02-23-2009,'00026');
+insert into Patient(patientID,contactDate,treatingPhysicianID) values ('00020',04-28-2000,'00026');
+insert into Patient(patientID,contactDate,treatingPhysicianID) values ('00021',07-17-2008,'00024');
+insert into Patient(patientID,contactDate,treatingPhysicianID) values ('00022',11-25-2011,'00027');
+insert into Patient(patientID,contactDate,treatingPhysicianID) values ('00023',05-03-2012,'00028');
 
 #insert deceased patients
-insert into Deceased(patientID,toeTag) values ('','01345');
+insert into Deceased(patientID,toeTag) values ('00018','01345');
 
 #insert resident patients
-insert into Resident(patientID,admittedDate) values ('',03-04-2013);
-insert into Resident(patientID,admittedDate) values ('',05-16-2014);
-insert into Resident(patientID,admittedDate) values ('',12-23-2015);
+insert into Resident(patientID,admittedDate) values ('00019',03-04-2013);
+insert into Resident(patientID,admittedDate) values ('00020',05-16-2014);
+insert into Resident(patientID,admittedDate) values ('00021',12-23-2015);
 
 #insert outpatients
-insert into Outpatient(patientID) values ('');
-insert into Outpatient(patientID) values ('');
-insert into Outpatient(patientID) values ('');
+insert into Outpatient(patientID) values ('00022');
+insert into Outpatient(patientID) values ('00023');
+insert into Outpatient(patientID) values ('00030');
 
 #insert visits
-insert into Visit(patientID,physicianID,visitDate,comments) values ('','',10-28-2014,'Patient had a dark red rash on forearm. Told patient to wash forearm every 6 hours.');
-insert into Visit(patientID,physicianID,visitDate,comments) values ('','',11-07-2014,'Checkup. Patients rash has cleared up.');
-insert into Visit(patientID,physicianID,visitDate,comments) values ('','',09-27-2015,'Patient is experiencing dizziness and headaches.');
-insert into Visit(patientID,physicianID,visitDate,comments) values ('','',08-14-2014,'Patient is fainting. Having trouble with blood sugar levels.');
+insert into Visit(patientID,physicianID,visitDate,comments) values ('00022','00024',10-28-2014,'Patient had a dark red rash on forearm. Told patient to wash forearm every 6 hours.');
+insert into Visit(patientID,physicianID,visitDate,comments) values ('00022','00026',11-07-2014,'Checkup. Patients rash has cleared up.');
+insert into Visit(patientID,physicianID,visitDate,comments) values ('00023','00026',09-27-2015,'Patient is experiencing dizziness and headaches.');
+insert into Visit(patientID,physicianID,visitDate,comments) values ('00030','00025',08-14-2014,'Patient is fainting. Having trouble with blood sugar levels.');
 
 #insert drugs into inventory
 insert into Inventory(drugName,units, inStock) values ('Ibuprofen','milligrams',true);
@@ -480,34 +489,34 @@ insert into Inventory(drugName,units, inStock) values ('Insulin','cubic centimet
 insert into Inventory(drugName,units, inStock) values ('Vicodin','milligrams',false);
 
 #insert prescriptions
-insert into Prescription(pharmacistID,patientID,physicianID,visitDate,drugName,units,quantity) values ('','','',09-27-2015,'Ibuprofen','milligrams','400');
-insert into Prescription(pharmacistID,patientID,physicianID,visitDate,drugName,units,quantity) values ('','','',08-14-2014,'Insulin','cubic centimeters','10');
+insert into Prescription(pharmacistID,patientID,physicianID,visitDate,drugName,units,quantity) values ('00010','00023','00026',09-27-2015,'Ibuprofen','milligrams','400');
+insert into Prescription(pharmacistID,patientID,physicianID,visitDate,drugName,units,quantity) values ('00011','00030','00025',08-14-2014,'Insulin','cubic centimeters','10');
 
 
 #insert physicians
-insert into Physician(physicianID,specialty,pagerNumber) values ('','Addiction','111');
-insert into Physician(physicianID,specialty,pagerNumber) values ('','Toxicology','222');
-insert into Physician(physicianID,specialty,pagerNumber) values ('','General','333');
-insert into Physician(physicianID,specialty,pagerNumber) values ('00021','Cardiovasular','444');
-insert into Physician(physicianID,specialty,pagerNumber) values ('00022','Gastrointestinal','555');
+insert into Physician(physicianID,specialty,pagerNumber) values ('00024','General','111');
+insert into Physician(physicianID,specialty,pagerNumber) values ('00025','Toxicology','222');
+insert into Physician(physicianID,specialty,pagerNumber) values ('00026','General','333');
+insert into Physician(physicianID,specialty,pagerNumber) values ('00027','Cardiovasular','444');
+insert into Physician(physicianID,specialty,pagerNumber) values ('00028','Gastrointestinal','555');
 
 #insert surgeons
-insert into Surgeon(surgeonID) values ('00021');
-insert into Surgeon(surgeonID) values ('00022');
+insert into Surgeon(surgeonID) values ('00028');
+insert into Surgeon(surgeonID) values ('00027');
 
 #insert surgery
-insert into Surgery(surgeonID,patientID,surgeryDate,reason) values ('00022','',01-04-2013,'Removed appendix');
-insert into Surgery(surgeonID,patientID,surgeryDate,reason) values ('00021','',03-13-2014,'Heart bypass');
+insert into Surgery(surgeonID,patientID,surgeryDate,reason) values ('00028','00018',01-04-2013,'Removed appendix'); #patient died and is classified deceased
+insert into Surgery(surgeonID,patientID,surgeryDate,reason) values ('00027','00023',03-13-2014,'Heart bypass');
 
 #insert volunteers
-insert into Volunteer(volunteerID) values ('');
-insert into Volunteer(volunteerID) values ('');
-insert into Volunteer(volunteerID) values ('');
+insert into Volunteer(volunteerID) values ('00029');
+insert into Volunteer(volunteerID) values ('00019');
+insert into Volunteer(volunteerID) values ('00013');
 
 #insert volunteer skills
-insert into VolunteerVolunteerSkill(volunteerId,skillName) values ('','');
-insert into VolunteerVolunteerSkill(volunteerId,skillName) values ('','');
-insert into VolunteerVolunteerSkill(volunteerId,skillName) values ('','');
-insert into VolunteerVolunteerSkill(volunteerId,skillName) values ('','');
-insert into VolunteerVolunteerSkill(volunteerId,skillName) values ('','');
-insert into VolunteerVolunteerSkill(volunteerId,skillName) values ('','');
+insert into VolunteerVolunteerSkill(volunteerId,skillName) values ('00029','CPR Training');
+insert into VolunteerVolunteerSkill(volunteerId,skillName) values ('00029','Leadership');
+insert into VolunteerVolunteerSkill(volunteerId,skillName) values ('00019','CPR Training');
+insert into VolunteerVolunteerSkill(volunteerId,skillName) values ('00019','Leadership');
+insert into VolunteerVolunteerSkill(volunteerId,skillName) values ('00019','Teamwork');
+insert into VolunteerVolunteerSkill(volunteerId,skillName) values ('00013','Customer Service');
