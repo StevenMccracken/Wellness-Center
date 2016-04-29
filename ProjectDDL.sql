@@ -100,6 +100,41 @@ insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,ci
 insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('00028','Hermes','Conrad','1968-04-27','7145550021','9642 Valley View St','Fullerton','CA','92831');
 insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('00029','Amy','Wong','1988-10-04','7145550022','2345 Electric Ave','Salt Lake City','UT','84101');
 insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) values('00030','Alfred','Hitchcock','1960-12-04','7145550023','2333 Geode Rd','Los Angeles','CA','90001');
+insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode)
+	values('49000', 'Justin', 'Calomeni', '1980-04-10', '4086794321', '1738 Wave Street', 'San Jose', 'CA', '95113');
+insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode)
+	values('49001', 'Dylan', 'Steele', '1975-05-05', '4088088065', '111 Miller Way', 'Santa Clara', 'CA', '95050');
+insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode)
+	values('49002', 'Joey', 'Sanfilippo', '1984-06-21', '4083735564', '1153 Cameo Drive', 'Campbell', 'CA', '95008');
+insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode)
+	values('49003', 'Nick', 'Jackson', '1984-05-13', '4089876543', '8008 Pineview Drive', 'Santa Clara', 'CA', '95050');
+insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode)
+	values('49004', 'Linda', 'Light', '1955-09-09', '3187109832', '101 Oldish Court', 'Boston', 'MA', '02108');
+insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode)
+	values('49005', 'Morgan', 'Moreno', '1983-02-18', '4158128128', '409 Ocean Drive', 'Long Beach', 'CA', '90801');
+insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode)
+	values('49006', 'Sammie', 'Meilano', '1980-09-12', '1062308593', '9100 Quest Street', 'Albany', 'NY', '12201');
+insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode)
+	values('49007', 'Natalie', 'Long', '1979-01-01', '5409827539', '2 Sunny Road', 'Santa Monica', 'CA', '90401');
+insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode)
+	values('49008', 'Tony', 'Gonzales', '1974-02-15', '4086872314', '47 Bent Drive', 'Campbell', 'CA', '95008');
+insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode)
+	values('49009', 'Justin', 'Bermudez', '1983-12-24', '4089602185', '1901 Boone Drive', 'Fremont', 'CA', '94536');
+insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode)
+	values('49010', 'Alex',  'Jacobsen', '1979-03-04', '5032196604', '100 Santa Fe Street', 'Sunnyvale', 'CA', '94085');
+insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode)
+	values('49011', 'Claire', 'Cecilio', '1985-05-08', '5553453456', '811 Yale Road', 'San Mateo', 'CA', '94401');
+insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode)
+	values('49012', 'Sharon', 'Mansha', '1985-03-23', '4086879000', '24255 Pacific Coast Highway', 'Malibu', 'CA', '90263');
+insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode)
+	values('49013', 'Dayanne', 'Gonzales', '1961-10-10', '8917564011', '24255 Pacific Coast Highway', 'Malibu', 'CA', '90263');
+insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode)
+	values('49014', 'Desmond', 'Herring', '1985-02-07', '6691236789', '24255 Pacific Coast Highway', 'Malibu', 'CA', '90263');
+insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode)
+	values('49015', 'Jasmine', 'Carter', '1963-10-17', '6691002358', '24255 Pacific Coast Highway', 'Malibu', 'CA', '90263');
+insert into Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode)
+	values('49016', 'Megan', 'Gavitt', '1974-05-02', '7149087542', '24255 Pacific Coast Highway', 'Malibu', 'CA', '90263');
+
 
 CREATE TABLE Employee
 (
