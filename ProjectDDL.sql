@@ -532,7 +532,7 @@ from EmployeeHired;
 
 #----------------------------------------------
 #drop tables
-
+/*
 drop table Bed;
 drop table Room;
 alter table CareCenter drop foreign key fk_RegisteredNurse_CareCenter;
@@ -571,8 +571,4 @@ drop table VolunteerSkills;
 drop table Volunteer;
 drop table Person;
 drop table State;
-
-
-
-
-
+*/
