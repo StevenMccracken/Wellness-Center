@@ -515,13 +515,27 @@ insert into VolunteerVolunteerSkills(volunteerID,skillName) values ('00013','Cus
 #-----------------------------------------------------------------
 # create views
 
-create view EmployeeHired as 
-select firstName, lastName, hireDate
-from Person inner join Employee on Person.personID = Employee.employeeID;
+# VIEW 1
+CREATE VIEW EmployeeHired AS 
+	SELECT firstName, lastName, hireDate FROM Person
+    INNER JOIN Employee ON Person.personID = Employee.employeeID;
 
-select * 
-from EmployeeHired;
+# VIEW 2
+CREATE VIEW NursesInCharge AS
+	SELECT careCenterName, firstName, lastName, phone FROM CareCenter
+	INNER JOIN Person ON CareCenter.headNurseID = Person.personID;
 
+# VIEW 3
+CREATE VIEW GoodTechnician AS
+	SELECT DISTINCT firstName, lastName FROM TechnicianTechnicialSkills
+	INNER JOIN Person ON TechnicianTechnicialSkills.technicianID = Person.personID;
+
+# VIEW 5
+CREATE VIEW OutPatientsNotVisited AS
+	SELECT firstName, lastName FROM Outpatient
+	INNER JOIN Person ON Outpatient.patientID = Person.personID
+	WHERE patientID NOT IN
+		(SELECT patientID FROM Visit);
 
 #-----------------------------------------------------------------
 #create queries
