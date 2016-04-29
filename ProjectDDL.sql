@@ -1,4 +1,3 @@
-/*------------------ SETUP TABLES ------------------*/
 CREATE TABLE Person
 ( 
 personID 		varchar(20) 	NOT NULL,
@@ -254,14 +253,14 @@ constraint fk_VolunteerSkills_VolunteerVolunteerSkills foreign key (skillName) r
 constraint pk_VolunteerSkill primary key (volunteerID,skillName)
 );
 
-/*------------------ DML ------------------*/
 
-# CREATE VIEWS
-CREATE VIEW EmployeeHired AS 
-	SELECT firstName, lastName, hireDate FROM Person
-    INNER JOIN Employee ON Person.personID = Employee.employeeID;
+#-----------------------------------------------------------------
+create view EmployeeHired as 
+select firstName, lastName, hireDate
+from Person inner join Employee on Person.personID = Employee.employeeID;
 
-
+select * 
+from EmployeeHired;
 #-----------------------------------------------------------------
 
 #enumerate State table
