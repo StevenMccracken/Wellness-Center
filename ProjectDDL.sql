@@ -570,63 +570,213 @@ WHERE patientID IS NOT NULL
 GROUP BY CareCenter.careCenterName;
 
 # VIEW 1
-CREATE VIEW EmployeeHired AS 
-	SELECT firstName, lastName, hireDate FROM Person
-    INNER JOIN Employee ON Person.personID = Employee.employeeID;
+CREATE VIEW EmployeeHired AS
+    SELECT 
+        firstName, lastName, hireDate
+    FROM
+        Person
+            INNER JOIN
+        Employee ON Person.personID = Employee.employeeID;
 
 # VIEW 2
 CREATE VIEW NursesInCharge AS
-	SELECT careCenterName, firstName, lastName, phone FROM CareCenter
-	INNER JOIN Person ON CareCenter.headNurseID = Person.personID;
+    SELECT 
+        careCenterName, firstName, lastName, phone
+    FROM
+        CareCenter
+            INNER JOIN
+        Person ON CareCenter.headNurseID = Person.personID;
 
 # VIEW 3
 CREATE VIEW GoodTechnician AS
-	SELECT DISTINCT firstName, lastName FROM TechnicianTechnicialSkills
-	INNER JOIN Person ON TechnicianTechnicialSkills.technicianID = Person.personID;
+    SELECT DISTINCT
+        firstName, lastName
+    FROM
+        TechnicianTechnicialSkills
+            INNER JOIN
+        Person ON TechnicianTechnicialSkills.technicianID = Person.personID;
 	
 # VIEW 4
 CREATE VIEW CareCenterBeds AS
-SELECT TotalBeds.careCenterName, OccupiedBeds.occupiedBeds, EmptyBeds.emptyBeds, TotalBeds.totalBeds FROM TotalBeds
-LEFT OUTER JOIN EmptyBeds ON TotalBeds.careCenterName = EmptyBeds.careCenterName
-LEFT OUTER JOIN OccupiedBeds ON TotalBeds.careCenterName = OccupiedBeds.careCenterName;
+    SELECT 
+        TotalBeds.careCenterName,
+        OccupiedBeds.occupiedBeds,
+        EmptyBeds.emptyBeds,
+        TotalBeds.totalBeds
+    FROM
+        TotalBeds
+            LEFT OUTER JOIN
+        EmptyBeds ON TotalBeds.careCenterName = EmptyBeds.careCenterName
+            LEFT OUTER JOIN
+        OccupiedBeds ON TotalBeds.careCenterName = OccupiedBeds.careCenterName;
 
 # VIEW 5
 CREATE VIEW OutPatientsNotVisited AS
-	SELECT firstName, lastName FROM Outpatient
-	INNER JOIN Person ON Outpatient.patientID = Person.personID
-	WHERE patientID NOT IN
-		(SELECT patientID FROM Visit);
+    SELECT 
+        firstName, lastName
+    FROM
+        Outpatient
+            INNER JOIN
+        Person ON Outpatient.patientID = Person.personID
+    WHERE
+        patientID NOT IN (SELECT 
+                patientID
+            FROM
+                Visit);
 
 #-----------------------------------------------------------------
 # QUERY 1
-SELECT jobClass, firstName, lastName FROM Staff
-INNER JOIN Person ON Staff.staffID = Person.personID;
+SELECT 
+    jobClass, firstName, lastName
+FROM
+    Staff
+        INNER JOIN
+    Person ON Staff.staffID = Person.personID;
 
 # QUERY 2
-SELECT firstName, lastName FROM Volunteer
-INNER JOIN Person ON Volunteer.volunteerID = Person.personID
-WHERE volunteerID NOT IN
-	(SELECT volunteerID FROM VolunteerVolunteerSkills);
+SELECT 
+    firstName, lastName
+FROM
+    Volunteer
+        INNER JOIN
+    Person ON Volunteer.volunteerID = Person.personID
+WHERE
+    volunteerID NOT IN (SELECT 
+            volunteerID
+        FROM
+            VolunteerVolunteerSkills);
     
 # QUERY 3
-SELECT firstName, lastName FROM Patient
-INNER JOIN Volunteer ON Patient.patientID = Volunteer.volunteerID
-INNER JOIN Person ON Volunteer.volunteerID = Person.personID;
+SELECT 
+    firstName, lastName
+FROM
+    Patient
+        INNER JOIN
+    Volunteer ON Patient.patientID = Volunteer.volunteerID
+        INNER JOIN
+    Person ON Volunteer.volunteerID = Person.personID;
 
 # QUERY 4
-select firstName, lastName from Visit
-inner join Person ON Visit.patientID = Person.personID
-group BY firstName, lastName
-having count(patientID) = 1;
+SELECT 
+    firstName, lastName
+FROM
+    Visit
+        INNER JOIN
+    Person ON Visit.patientID = Person.personID
+GROUP BY firstName , lastName
+HAVING COUNT(patientID) = 1;
 
 # QUERY 5
-select VolunteerSkills.skillName, count(VolunteerVolunteerSkills.skillName) from VolunteerVolunteerSkills
-right outer join VolunteerSkills ON VolunteerVolunteerSkills.skillName = VolunteerSkills.skillName
-group by VolunteerSkills.skillName
+SELECT 
+    VolunteerSkills.skillName,
+    COUNT(VolunteerVolunteerSkills.skillName)
+FROM
+    VolunteerVolunteerSkills
+        RIGHT OUTER JOIN
+    VolunteerSkills ON VolunteerVolunteerSkills.skillName = VolunteerSkills.skillName
+GROUP BY VolunteerSkills.skillName 
 UNION ALL
-select TechnicalSkills.skillName, count(TechnicianTechnicialSkills.skillName) from TechnicianTechnicialSkills
-right outer join TechnicalSkills ON TechnicianTechnicialSkills.skillName = TechnicalSkills.skillName
-group by TechnicalSkills.skillName;
+SELECT 
+    TechnicalSkills.skillName,
+    COUNT(TechnicianTechnicialSkills.skillName)
+FROM
+    TechnicianTechnicialSkills
+        RIGHT OUTER JOIN
+    TechnicalSkills ON TechnicianTechnicialSkills.skillName = TechnicalSkills.skillName
+GROUP BY TechnicalSkills.skillName;
+
+# QUERY 6
+SELECT 
+    careCenterName
+FROM
+    EmptyBeds
+WHERE
+    emptyBeds = 0;
+    
+# QUERY 7
+SELECT 
+    firstName, lastName
+FROM
+    Nurse
+        INNER JOIN
+    Person ON Nurse.nurseID = Person.personID
+WHERE
+    certificate = TRUE
+        AND nurseID NOT IN (SELECT 
+            headNurseID
+        FROM
+            CareCenter);
+    
+# QUERY 8
+SELECT 
+    firstName, lastName, CareCenter.careCenterName
+FROM
+    Nurse
+        INNER JOIN
+    CareCenter ON Nurse.careCenterName = CareCenter.careCenterName
+        INNER JOIN
+    Person ON Nurse.nurseID = Person.personID
+WHERE
+    Nurse.nurseID = CareCenter.headNurseID;
+
+# QUERY 9 ??? not finished. I think it needs a correlated subquery
+SELECT 
+    technicianID, COUNT(technicianID)
+FROM
+    TechnicianTechnicialSkills
+GROUP BY technicianID;
+
+# QUERY 10
+SELECT 
+    firstName, lastName, admittedDate
+FROM
+    Resident
+        INNER JOIN
+    Person ON Resident.patientID = Person.personID
+WHERE
+    admittedDate > (SELECT 
+            MAX(hireDate)
+        FROM
+            Employee);
+    
+# QUERY 11 NEEDS BETTER DATA
+SELECT 
+    firstName, lastName, contactDate, admittedDate
+FROM
+    Patient
+        INNER JOIN
+    Resident ON Patient.patientID = Resident.patientID
+        INNER JOIN
+    Person ON Patient.patientID = Person.personID
+WHERE
+    TIMESTAMPDIFF(DAY,contactDate,admittedDate) <= 7;
+
+# QUERY 12
+SELECT 
+    firstName, lastName
+FROM
+    Patient
+        INNER JOIN
+    Person ON patientID = personID
+WHERE
+    patientID NOT IN (SELECT 
+            patientID
+        FROM
+            Visit) 
+UNION
+SELECT 
+    firstName, lastName
+FROM
+    Patient
+        INNER JOIN
+    Visit ON Patient.patientID = Visit.patientID
+        INNER JOIN
+    Person ON Patient.patientID = Person.personID
+WHERE
+    TIMESTAMPDIFF(DAY,contactDate,visitDate) > 7;
+
+# QUERY 13
+
 
 #----------------------------------------------
 #DROP TABLEs
