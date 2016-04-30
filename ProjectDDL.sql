@@ -208,6 +208,7 @@ CONSTRAINT pk_Volunteer PRIMARY KEY (volunteerID)
 INSERT INTO Volunteer(volunteerID) VALUES ('00029');
 INSERT INTO Volunteer(volunteerID) VALUES ('00019');
 INSERT INTO Volunteer(volunteerID) VALUES ('00013');
+INSERT INTO Volunteer(volunteerID) VALUES ('49011');
 
 
 CREATE TABLE Nurse
@@ -597,12 +598,35 @@ CREATE VIEW OutPatientsNotVisited AS
 		(SELECT patientID FROM Visit);
 
 #-----------------------------------------------------------------
-#CREATE queries
+# QUERY 1
+SELECT jobClass, firstName, lastName FROM Staff
+INNER JOIN Person ON Staff.staffID = Person.personID;
 
+# QUERY 2
+SELECT firstName, lastName FROM Volunteer
+INNER JOIN Person ON Volunteer.volunteerID = Person.personID
+WHERE volunteerID NOT IN
+	(SELECT volunteerID FROM VolunteerVolunteerSkills);
+    
+# QUERY 3
+SELECT firstName, lastName FROM Patient
+INNER JOIN Volunteer ON Patient.patientID = Volunteer.volunteerID
+INNER JOIN Person ON Volunteer.volunteerID = Person.personID;
 
-#-----------------------------------------------------------------
-#Perform queries
+# QUERY 4
+select firstName, lastName from Visit
+inner join Person ON Visit.patientID = Person.personID
+group BY firstName, lastName
+having count(patientID) = 1;
 
+# QUERY 5
+select VolunteerSkills.skillName, count(VolunteerVolunteerSkills.skillName) from VolunteerVolunteerSkills
+right outer join VolunteerSkills ON VolunteerVolunteerSkills.skillName = VolunteerSkills.skillName
+group by VolunteerSkills.skillName
+UNION ALL
+select TechnicalSkills.skillName, count(TechnicianTechnicialSkills.skillName) from TechnicianTechnicialSkills
+right outer join TechnicalSkills ON TechnicianTechnicialSkills.skillName = TechnicalSkills.skillName
+group by TechnicalSkills.skillName;
 
 #----------------------------------------------
 #DROP TABLEs
