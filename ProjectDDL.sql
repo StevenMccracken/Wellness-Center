@@ -190,9 +190,9 @@ CONSTRAINT pk_Patient PRIMARY KEY (patientID)
 
 #insert patients
 INSERT INTO Patient(patientID,contactDate,treatingPhysicianID) VALUES ('00018','2010-02-03','00025');
-INSERT INTO Patient(patientID,contactDate,treatingPhysicianID) VALUES ('00019','2009-02-23','00026');
-INSERT INTO Patient(patientID,contactDate,treatingPhysicianID) VALUES ('00020','2000-04-28','00026');
-INSERT INTO Patient(patientID,contactDate,treatingPhysicianID) VALUES ('00021','2008-07-17','00024');
+INSERT INTO Patient(patientID,contactDate,treatingPhysicianID) VALUES ('00019','2015-02-23','00026');
+INSERT INTO Patient(patientID,contactDate,treatingPhysicianID) VALUES ('00020','2014-05-16','00026');
+INSERT INTO Patient(patientID,contactDate,treatingPhysicianID) VALUES ('00021','2016-01-13','00024');
 INSERT INTO Patient(patientID,contactDate,treatingPhysicianID) VALUES ('00022','2011-11-25','00027');
 INSERT INTO Patient(patientID,contactDate,treatingPhysicianID) VALUES ('00023','2012-05-03','00028');
 INSERT INTO Patient(patientID,contactDate,treatingPhysicianID) VALUES ('00030','2013-10-13','00025');
@@ -288,7 +288,7 @@ CONSTRAINT pk_Resident PRIMARY KEY (patientID)
 );
 
 #insert resident patients
-INSERT INTO Resident(patientID,admittedDate) VALUES ('00019','2013-03-04');
+INSERT INTO Resident(patientID,admittedDate) VALUES ('00019','2015-02-24');
 INSERT INTO Resident(patientID,admittedDate) VALUES ('00020','2014-05-16');
 INSERT INTO Resident(patientID,admittedDate) VALUES ('00021','2015-12-23');
 
