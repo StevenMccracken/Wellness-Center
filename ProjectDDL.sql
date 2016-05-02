@@ -777,7 +777,14 @@ WHERE
 
 # QUERY 13
 
-
+# QUERY 14
+select physicianID, count(distinct patientID) outpatients from Visit
+group by physicianID
+having count(distinct patientID) > 1;
+select treatingPhysicianID, count(patientID) from Patient
+group by treatingPhysicianID;
+select * from Visit;
+select * from Patient;
 #----------------------------------------------
 #DROP TABLEs
 /*
