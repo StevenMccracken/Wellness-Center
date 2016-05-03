@@ -548,8 +548,7 @@ INSERT INTO VolunteerVolunteerSkills(volunteerID,skillName) VALUES ('00019','Tea
 INSERT INTO VolunteerVolunteerSkills(volunteerID,skillName) VALUES ('00013','Customer Service');
 
 
-#-----------------------------------------------------------------
-# CREATE VIEWs
+/*---------------------- VIEWS ----------------------*/
 
 # AUXILIARY VIEWS 
 CREATE VIEW TotalBeds AS
@@ -568,6 +567,8 @@ SELECT CareCenter.careCenterName, COUNT(bedNumber) AS 'occupiedBeds' FROM CareCe
 INNER JOIN Bed ON CareCenter.careCenterName = Bed.careCenterName
 WHERE patientID IS NOT NULL
 GROUP BY CareCenter.careCenterName;
+
+# REQUIRED VIEWS
 
 # VIEW 1
 CREATE VIEW EmployeeHired AS
@@ -624,7 +625,8 @@ CREATE VIEW OutPatientsNotVisited AS
             FROM
                 Visit);
 
-#-----------------------------------------------------------------
+/*---------------------- QUERIES ----------------------*/
+
 # QUERY 1
 SELECT 
     jobClass, firstName, lastName
@@ -819,12 +821,33 @@ FROM
 WHERE
     patientsOfPhysician.numOutpatients > patientsOfPhysician.numResidentPatients;
 
-# QUERY 15
+# QUERY 15 (should I have select distinct?)
+SELECT DISTINCT
+    firstName, lastName
+FROM
+    Visit
+        INNER JOIN
+    Patient ON Visit.patientID = Patient.patientID
+        INNER JOIN
+    Person ON Visit.physicianID = Person.personID
+WHERE
+    Visit.physicianID != Patient.treatingPhysicianID;
 
+# QUERY 16 (Show all the surgeries where the surgeon was not the patient's treating physician)
+SELECT 
+    firstName, lastName
+FROM
+    Surgery
+        INNER JOIN
+    Patient ON Surgery.patientID = Patient.patientID
+        INNER JOIN
+    Person ON Surgery.surgeonID = Person.personID
+WHERE
+    Surgery.surgeonID != Patient.treatingPhysicianID;
+    
+/*---------------------- TRIGGERS ----------------------*/
 
-#----------------------------------------------
-# TRIGGERS
-drop trigger cecs323bg10.zipCode_BEFORE_INSERT;
+#DROP TRIGGER cecs323bg10.zipCode_BEFORE_INSERT;
 DELIMITER $$
 CREATE TRIGGER cecs323bg10.zipCode_BEFORE_INSERT BEFORE INSERT
 ON Person FOR EACH ROW
@@ -847,13 +870,8 @@ BEGIN
 		END;
 	END IF;
 END;$$
-DELIMITER ;
 
-select * from Person;
-INSERT INTO Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) VALUES('99999','first','last','1985-10-23','0000000000','5898 Marian St','shit','CA','90631');
-
-drop trigger cecs323bg10.prescription_BEFORE_INSERT;
-DELIMITER $$
+#DROP TRIGGER cecs323bg10.prescription_BEFORE_INSERT;
 CREATE TRIGGER cecs323bg10.prescription_BEFORE_INSERT BEFORE INSERT
 ON Prescription FOR EACH ROW
 BEGIN
@@ -874,12 +892,8 @@ BEGIN
 		END;
 	END IF;
 END;$$
-DELIMITER ;
 
-insert into Prescription (pharmacistID, patientID, physicianID, drugName, visitDate, units, quantity) VALUES('00010','00030','00025','Vicodin','2014-08-14','milligrams','20');
-
-drop trigger cecs323bg10.registeredNurse_BEFORE_INSERT;
-DELIMITER $$
+#DROP TRIGGER cecs323bg10.registeredNurse_BEFORE_INSERT;
 CREATE TRIGGER cecs323bg10.registeredNurse_BEFORE_INSERT BEFORE INSERT
 ON RegisteredNurse FOR EACH ROW
 BEGIN
@@ -902,7 +916,19 @@ BEGIN
 END;$$
 DELIMITER ;
 
-insert into RegisteredNurse (nurseID) values('00001');
+# Test cecs323bg10.zipCode_BEFORE_INSERT trigger
+SELECT city, state, zipCode FROM Person WHERE zipCode = '90630';
+INSERT INTO Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode)
+	VALUES ('99999','Cletus','Hammer','1985-10-23','4930579033','5898 Jilian St','Narnia','CA','90630');
+
+# Test cecs323bg10.registeredNurse_BEFORE_INSERT trigger
+SELECT nurseID, certificate FROM Nurse WHERE nurseID = '00002';
+INSERT INTO RegisteredNurse (nurseID) VALUES ('00002');
+
+# Test cecs323bg10.prescription_BEFORE_INSERT trigger
+SELECT drugName, inStock FROM Inventory WHERE drugName = 'Vicodin';
+INSERT INTO Prescription (pharmacistID, patientID, physicianID, drugName, visitDate, units, quantity)
+	VALUES ('00010','00030','00025','Vicodin','2014-08-14','milligrams','20');
 
 # make after insert for registered nurse insert
 #select * from information_schema.triggers where trigger_schema = 'whatever';
