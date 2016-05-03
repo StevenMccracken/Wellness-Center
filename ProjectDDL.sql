@@ -821,7 +821,91 @@ WHERE
 
 # QUERY 15
 
+
+#----------------------------------------------
+# TRIGGERS
+drop trigger cecs323bg10.zipCode_BEFORE_INSERT;
+DELIMITER $$
+CREATE TRIGGER cecs323bg10.zipCode_BEFORE_INSERT BEFORE INSERT
+ON Person FOR EACH ROW
+BEGIN
+	DECLARE message VARCHAR(100);
+	DECLARE existingCity VARCHAR(50);
+    DECLARE existingState VARCHAR(2);
     
+	SELECT 
+		city, state INTO existingCity , existingState
+	FROM
+		Person
+	WHERE
+		zipCode = NEW.zipCode;
+        
+    IF (existingCity != NEW.city OR existingState != NEW.state) THEN
+		BEGIN
+			SET message = concat("Invalid city or state for zipcode ", NEW.zipCode);
+			SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = message;
+		END;
+	END IF;
+END;$$
+DELIMITER ;
+
+select * from Person;
+INSERT INTO Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode) VALUES('99999','first','last','1985-10-23','0000000000','5898 Marian St','shit','CA','90631');
+
+drop trigger cecs323bg10.prescription_BEFORE_INSERT;
+DELIMITER $$
+CREATE TRIGGER cecs323bg10.prescription_BEFORE_INSERT BEFORE INSERT
+ON Prescription FOR EACH ROW
+BEGIN
+	DECLARE message VARCHAR(100);
+	DECLARE isDrugInStock BOOLEAN;
+    
+	SELECT 
+		inStock INTO isDrugInStock
+	FROM
+		Inventory
+	WHERE
+		drugName = NEW.drugName;
+        
+    IF (!isDrugInStock) THEN
+		BEGIN
+			SET message = concat(NEW.drugName, " is not in stock!");
+			SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = message;
+		END;
+	END IF;
+END;$$
+DELIMITER ;
+
+insert into Prescription (pharmacistID, patientID, physicianID, drugName, visitDate, units, quantity) VALUES('00010','00030','00025','Vicodin','2014-08-14','milligrams','20');
+
+drop trigger cecs323bg10.registeredNurse_BEFORE_INSERT;
+DELIMITER $$
+CREATE TRIGGER cecs323bg10.registeredNurse_BEFORE_INSERT BEFORE INSERT
+ON RegisteredNurse FOR EACH ROW
+BEGIN
+	DECLARE message VARCHAR(100);
+	DECLARE certifiedNurse BOOLEAN;
+    
+	SELECT 
+		certificate INTO certifiedNurse
+	FROM
+		Nurse
+	WHERE
+		nurseID = NEW.nurseID;
+        
+    IF (!certifiedNurse) THEN
+		BEGIN
+			SET message = concat(NEW.nurseID, " is not certified to be a RN!");
+			SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = message;
+		END;
+	END IF;
+END;$$
+DELIMITER ;
+
+insert into RegisteredNurse (nurseID) values('00001');
+
+# make after insert for registered nurse insert
+#select * from information_schema.triggers where trigger_schema = 'whatever';
 #----------------------------------------------
 #DROP TABLEs
 /*
