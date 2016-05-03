@@ -1,3 +1,5 @@
+/*---------------------- DDL & DML ----------------------*/
+
 CREATE TABLE State (
     state 	VARCHAR(2) NOT NULL,
     CONSTRAINT pk_State PRIMARY KEY (state)
@@ -1022,10 +1024,9 @@ SELECT drugName, inStock FROM Inventory WHERE drugName = 'Vicodin';
 INSERT INTO Prescription (pharmacistID, patientID, physicianID, drugName, visitDate, units, quantity)
 	VALUES ('00010','00030','00025','Vicodin','2014-08-14','milligrams','20');
 
-# make after insert for registered nurse insert
 #select * from information_schema.triggers where trigger_schema = 'whatever';
-#----------------------------------------------
-#DROP TABLEs
+/*---------------------- DROP TABLES ----------------------*/
+
 /*
 DROP TABLE Bed;
 DROP TABLE Room;
@@ -1066,3 +1067,10 @@ DROP TABLE Volunteer;
 DROP TABLE Person;
 DROP TABLE State;
 */
+
+/*---------------------- NOTES ----------------------*/
+# make after insert for registered nurse insert
+# make triggers for date sensitive inserts, no future dates
+# make trigger to limit number of beds in a room
+# make trigger to enforce admittedDate for resident patient is on or after contactDate
+# make trigger to prevent employees from being too young
