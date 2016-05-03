@@ -719,12 +719,25 @@ FROM
 WHERE
     Nurse.nurseID = CareCenter.headNurseID;
 
-# QUERY 9 ??? not finished. I think it needs a correlated subquery
+# QUERY 9
 SELECT 
-    technicianID, COUNT(technicianID)
+    Laboratory.labName
 FROM
-    TechnicianTechnicialSkills
-GROUP BY technicianID;
+    Laboratory
+WHERE
+    labName NOT IN (SELECT 
+            Laboratory.labName
+        FROM
+            Technician
+                INNER JOIN
+            TechnicianLab ON Technician.technicianID = TechnicianLab.technicianID
+                INNER JOIN
+            Laboratory ON TechnicianLab.labName = Laboratory.labName
+        WHERE
+            Technician.technicianID NOT IN (SELECT 
+                    TechnicianTechnicialSkills.technicianID
+                FROM
+                    TechnicianTechnicialSkills));
 
 # QUERY 10
 SELECT 
@@ -739,7 +752,7 @@ WHERE
         FROM
             Employee);
     
-# QUERY 11 NEEDS BETTER DATA
+# QUERY 11
 SELECT 
     firstName, lastName, contactDate, admittedDate
 FROM
@@ -775,9 +788,40 @@ FROM
 WHERE
     TIMESTAMPDIFF(DAY,contactDate,visitDate) > 7;
 
-# QUERY 13
+# QUERY 13 NEEDS BETTER DATA
+SELECT 
+    firstName, lastName, visitDate
+FROM
+    Physician
+        INNER JOIN
+    Visit ON Physician.physicianID = Visit.physicianID
+        INNER JOIN
+    Person ON Physician.physicianID = personID
+GROUP BY Physician.physicianID , visitDate
+HAVING COUNT(Visit.physicianID) > 3;
 
+# QUERY 14
+SELECT 
+    firstName, lastName, numResidentPatients, numOutpatients
+FROM
+    (SELECT 
+        Physician.physicianID,
+		COUNT(Resident.patientID) AS numResidentPatients,
+		COUNT(Outpatient.patientID) AS numOutpatients
+    FROM
+        Physician
+    INNER JOIN Patient ON Physician.physicianID = Patient.treatingPhysicianID
+    LEFT OUTER JOIN Resident ON Patient.patientID = Resident.patientID
+    LEFT OUTER JOIN Outpatient ON Patient.patientID = Outpatient.patientID
+    GROUP BY Physician.physicianID) AS patientsOfPhysician
+        INNER JOIN
+    Person ON physicianID = Person.personID
+WHERE
+    patientsOfPhysician.numOutpatients > patientsOfPhysician.numResidentPatients;
 
+# QUERY 15
+
+    
 #----------------------------------------------
 #DROP TABLEs
 /*
