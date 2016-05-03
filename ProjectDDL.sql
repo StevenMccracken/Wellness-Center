@@ -69,6 +69,9 @@ CREATE TABLE Person (
     CONSTRAINT pk_Person PRIMARY KEY (personID)
 );
 
+ALTER TABLE Person ADD CONSTRAINT
+	uk_Person UNIQUE (firstName,lastName,birthDate,streetAddress,city,state,zipCode);
+
 INSERT INTO Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode)
 	VALUES ('00001','Barbara','Streisand','1985-10-23','7145558686','5898 Marian St','Cypress','CA','90630');
 INSERT INTO Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode)
