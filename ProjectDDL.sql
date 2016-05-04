@@ -93,7 +93,7 @@ INSERT INTO Person (personID,firstName,lastName,birthDate,phone,streetAddress,ci
 INSERT INTO Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode)
 	VALUES ('00009','Eddard','Stark','1955-07-01','7145550002','4444 Candy Ln','Pittsburgh','PA','15201');
 INSERT INTO Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode)
-	VALUES ('00010','Theon','Grayjoy','1988-02-28','7145550003','3131 Huston St, Apt# 3','Houston','TX','77001');
+	VALUES ('00010','Theon','Grayjoy','1988-02-28','7145550003','3131 Huston St,Apt# 3','Houston','TX','77001');
 INSERT INTO Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode)
 	VALUES ('00011','Tyrion','Lannister','1977-07-05','7145550004','4000 Shady Oaks Dr','Anchorage','AK','99501');
 INSERT INTO Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode)
@@ -155,7 +155,7 @@ INSERT INTO Person (personID,firstName,lastName,birthDate,phone,streetAddress,ci
 INSERT INTO Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode)
 	VALUES('49009','Justin','Bermudez','1983-12-24','4089602185','1901 Boone Drive','Fremont','CA','94536');
 INSERT INTO Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode)
-	VALUES('49010','Alex', 'Jacobsen','1979-03-04','5032196604','100 Santa Fe Street','Sunnyvale','CA','94085');
+	VALUES('49010','Alex','Jacobsen','1979-03-04','5032196604','100 Santa Fe Street','Sunnyvale','CA','94085');
 INSERT INTO Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode)
 	VALUES('49011','Claire','Cecilio','1985-05-08','5553453456','811 Yale Road','San Mateo','CA','94401');
 INSERT INTO Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode)
@@ -299,7 +299,7 @@ CREATE TABLE Room (
     roomNumber 		INT(10) 	NOT NULL,
     CONSTRAINT fk_CareCenter_Room FOREIGN KEY (careCenterName)
         REFERENCES CareCenter (careCenterName),
-    CONSTRAINT pk_Room PRIMARY KEY (careCenterName , roomNumber)
+    CONSTRAINT pk_Room PRIMARY KEY (careCenterName,roomNumber)
 );
 
 #insert rooms
@@ -331,11 +331,11 @@ CREATE TABLE Bed (
     roomNumber 		INT(10) 	NOT NULL,
     bedNumber 		INT(10) 	NOT NULL,
     patientID 		VARCHAR(20),
-    CONSTRAINT fk_Room_Bed FOREIGN KEY (careCenterName , roomNumber)
-        REFERENCES Room (careCenterName , roomNumber),
+    CONSTRAINT fk_Room_Bed FOREIGN KEY (careCenterName,roomNumber)
+        REFERENCES Room (careCenterName,roomNumber),
     CONSTRAINT fk_Resident_Bed FOREIGN KEY (patientID)
         REFERENCES Resident (patientID),
-    CONSTRAINT pk_Bed PRIMARY KEY (careCenterName , roomNumber , bedNumber)
+    CONSTRAINT pk_Bed PRIMARY KEY (careCenterName,roomNumber,bedNumber)
 );
 
 #insert beds
@@ -403,7 +403,7 @@ CREATE TABLE TechnicianTechnicialSkills (
         REFERENCES Technician (technicianID),
     CONSTRAINT fk_TechnicalSkills_TechncianTechnicalSkills FOREIGN KEY (skillName)
         REFERENCES TechnicalSkills (skillName),
-    CONSTRAINT pk_Technical_Skills PRIMARY KEY (technicianID , skillName)
+    CONSTRAINT pk_Technical_Skills PRIMARY KEY (technicianID,skillName)
 );
 
 #insert technician-technicalskills
@@ -438,7 +438,7 @@ CREATE TABLE TechnicianLab (
         REFERENCES Technician (technicianID),
     CONSTRAINT fk_Laboratory_TechnicianLab FOREIGN KEY (labName)
         REFERENCES Laboratory (labName),
-    CONSTRAINT pk_TechnicianLab PRIMARY KEY (technicianID , labName)
+    CONSTRAINT pk_TechnicianLab PRIMARY KEY (technicianID,labName)
 );
 
 #insert technician-lab
@@ -487,7 +487,7 @@ CREATE TABLE Visit (
         REFERENCES Outpatient (patientID),
     CONSTRAINT fk_Physician_Visit FOREIGN KEY (physicianID)
         REFERENCES Physician (physicianID),
-    CONSTRAINT pk_Visit PRIMARY KEY (patientID , physicianID , visitDate)
+    CONSTRAINT pk_Visit PRIMARY KEY (patientID,physicianID,visitDate)
 );
 
 #insert visits
@@ -504,13 +504,13 @@ CREATE TABLE Inventory (
     inStock 	BOOLEAN 	NOT NULL,
     drugName 	VARCHAR(20) NOT NULL,
     units 		VARCHAR(20) NOT NULL,
-    CONSTRAINT pk_Inventory PRIMARY KEY (drugName , units)
+    CONSTRAINT pk_Inventory PRIMARY KEY (drugName,units)
 );
 
 #insert drugs into inventory
-INSERT INTO Inventory (drugName,units, inStock) VALUES ('Ibuprofen','milligrams',TRUE);
-INSERT INTO Inventory (drugName,units, inStock) VALUES ('Insulin','cubic centimeters',TRUE);
-INSERT INTO Inventory (drugName,units, inStock) VALUES ('Vicodin','milligrams',FALSE);
+INSERT INTO Inventory (drugName,units,inStock) VALUES ('Ibuprofen','milligrams',TRUE);
+INSERT INTO Inventory (drugName,units,inStock) VALUES ('Insulin','cubic centimeters',TRUE);
+INSERT INTO Inventory (drugName,units,inStock) VALUES ('Vicodin','milligrams',FALSE);
 
 CREATE TABLE Prescription (
     patientID 		VARCHAR(20) NOT NULL,
@@ -520,13 +520,13 @@ CREATE TABLE Prescription (
     units 			VARCHAR(20) NOT NULL,
     quantity 		INT(5) 		NOT NULL,
     pharmacistID 	VARCHAR(20) NOT NULL,
-    CONSTRAINT fk_Visit_Prescription FOREIGN KEY (patientID , physicianID , visitDate)
-        REFERENCES Visit (patientID , physicianID , visitDate),
-    CONSTRAINT fk_Inventory_Prescription FOREIGN KEY (drugName , units)
-        REFERENCES Inventory (drugName , units),
+    CONSTRAINT fk_Visit_Prescription FOREIGN KEY (patientID,physicianID,visitDate)
+        REFERENCES Visit (patientID ,physicianID ,visitDate),
+    CONSTRAINT fk_Inventory_Prescription FOREIGN KEY (drugName ,units)
+        REFERENCES Inventory (drugName ,units),
     CONSTRAINT fk_Pharmacist_Prescription FOREIGN KEY (pharmacistID)
         REFERENCES Pharmacist (pharmacistID),
-    CONSTRAINT pk_Prescription PRIMARY KEY (patientID , physicianID , visitDate , drugName)
+    CONSTRAINT pk_Prescription PRIMARY KEY (patientID ,physicianID ,visitDate ,drugName)
 );
 
 #insert prescriptions
@@ -555,7 +555,7 @@ CREATE TABLE Surgery (
         REFERENCES Surgeon (physicianID),
     CONSTRAINT fk_Patient_Surgery FOREIGN KEY (patientID)
         REFERENCES Patient (patientID),
-    CONSTRAINT pk_Surgery PRIMARY KEY (physicianID , patientID , surgeryDate)
+    CONSTRAINT pk_Surgery PRIMARY KEY (physicianID,patientID,surgeryDate)
 );
 
 #insert surgery
@@ -581,7 +581,7 @@ CREATE TABLE VolunteerVolunteerSkills (
         REFERENCES Volunteer (volunteerID),
     CONSTRAINT fk_VolunteerSkills_VolunteerVolunteerSkills FOREIGN KEY (skillName)
         REFERENCES VolunteerSkills (skillName),
-    CONSTRAINT pk_VolunteerSkill PRIMARY KEY (volunteerID , skillName)
+    CONSTRAINT pk_VolunteerSkill PRIMARY KEY (volunteerID,skillName)
 );
 
 #insert volunteer skills
@@ -599,7 +599,7 @@ INSERT INTO VolunteerVolunteerSkills (volunteerID,skillName) VALUES ('00013','Cu
 
 CREATE VIEW TotalBeds AS
     SELECT 
-        CareCenter.careCenterName, COUNT(bedNumber) AS 'totalBeds'
+        CareCenter.careCenterName,COUNT(bedNumber) AS 'totalBeds'
     FROM
         CareCenter
             INNER JOIN
@@ -610,7 +610,7 @@ CREATE VIEW TotalBeds AS
 
 CREATE VIEW FilledBeds AS
     SELECT 
-        CareCenter.careCenterName, COUNT(bedNumber) AS 'filledBeds'
+        CareCenter.careCenterName,COUNT(bedNumber) AS 'filledBeds'
     FROM
         CareCenter
             INNER JOIN
@@ -621,11 +621,11 @@ CREATE VIEW FilledBeds AS
         Bed.patientID IS NOT NULL
     GROUP BY CareCenter.careCenterName;
 
-CREATE VIEW CareCenterBedStatus AS
+CREATE VIEW CareCenter_TotalBeds_FilledBeds AS
     SELECT 
         careCenterName,
         totalBeds,
-        IF(filledBeds IS NULL, 0, filledBeds) filledBeds
+        IF(filledBeds IS NULL,0,filledBeds) filledBeds
     FROM
         TotalBeds
             LEFT OUTER JOIN
@@ -634,9 +634,10 @@ CREATE VIEW CareCenterBedStatus AS
 # REQUIRED VIEWS
 
 # VIEW 1
-CREATE VIEW EmployeeHired AS
+CREATE VIEW EmployeesHired AS
     SELECT 
-        firstName, lastName, hireDate
+        CONCAT(firstName,' ',lastName) AS 'Hospital Employee',
+        hireDate AS 'Hire date'
     FROM
         Person
             INNER JOIN
@@ -645,7 +646,9 @@ CREATE VIEW EmployeeHired AS
 # VIEW 2
 CREATE VIEW NursesInCharge AS
     SELECT 
-        careCenterName, firstName, lastName, phone
+        careCenterName AS 'Care Center',
+        CONCAT(firstName," ",lastName) AS 'Head Nurse',
+        phone AS 'Nurse phone number'
     FROM
         CareCenter
             INNER JOIN
@@ -654,30 +657,26 @@ CREATE VIEW NursesInCharge AS
 # VIEW 3
 CREATE VIEW GoodTechnician AS
     SELECT DISTINCT
-        firstName, lastName
+        firstName,lastName
     FROM
         TechnicianTechnicialSkills
             INNER JOIN
-        Person ON TechnicianTechnicialSkills.technicianID = Person.personID;
-	
-# VIEW 4 FIX THIS
+        Person ON technicianID = personID;
+
+# VIEW 4
 CREATE VIEW CareCenterBeds AS
     SELECT 
-        TotalBeds.careCenterName,
-        OccupiedBeds.occupiedBeds,
-        EmptyBeds.emptyBeds,
-        TotalBeds.totalBeds
+        careCenterName AS 'Care Center',
+        filledBeds AS 'Occupied beds',
+        (totalBeds - filledBeds) AS 'Free beds',
+        totalBeds AS 'Total number of beds'
     FROM
-        TotalBeds
-            LEFT OUTER JOIN
-        EmptyBeds ON TotalBeds.careCenterName = EmptyBeds.careCenterName
-            LEFT OUTER JOIN
-        OccupiedBeds ON TotalBeds.careCenterName = OccupiedBeds.careCenterName;
+        CareCenter_TotalBeds_FilledBeds;
 
-# VIEW 5
-CREATE VIEW OutPatientsNotVisited AS
+# VIEW 5 NEEDS BETTER DATA
+CREATE VIEW OutpatientsNotVisited AS
     SELECT 
-        firstName, lastName
+        firstName,lastName
     FROM
         Outpatient
             INNER JOIN
@@ -689,42 +688,33 @@ CREATE VIEW OutPatientsNotVisited AS
                 Visit);
 
 /*---------------------- QUERIES ----------------------*/
-SELECT 
-    *
-FROM
-    EmployeeHired;
-SELECT 
-    *
-FROM
-    NursesInCharge;
-SELECT 
-    *
-FROM
-    GoodTechnician;
-SELECT 
-    *
-FROM
-    CareCenterBeds;
-SELECT 
-    *
-FROM
-    OutPatientsNotVisited;
+
+# TEST VIEW OUTPUT
+SELECT * FROM TotalBeds; # Aux View 1
+SELECT * FROM FilledBeds; # Aux View 2
+SELECT * FROM CareCenter_TotalBeds_FilledBeds; # Aux View 3
+
+SELECT * FROM EmployeesHired; # Required view 1
+SELECT * FROM NursesInCharge; # Required view 2
+SELECT * FROM GoodTechnician; # Required view 3
+SELECT * FROM CareCenterBeds; # Required view 4
+SELECT * FROM OutpatientsNotVisited; # Required view 5
 
 # QUERY 1
 SELECT 
-    jobClass, firstName, lastName
+    jobClass,firstName,lastName
 FROM
     Staff
         INNER JOIN
-    Person ON Staff.staffID = Person.personID;
+    Person ON staffID = personID;
 
 # QUERY 2
 SELECT 
-    firstName, lastName
+    CONCAT(firstName,' ',lastName) AS 'Volunteers without skills'
 FROM
     Volunteer
         INNER JOIN
-    Person ON Volunteer.volunteerID = Person.personID
+    Person ON volunteerID = personID
 WHERE
     volunteerID NOT IN (SELECT 
             volunteerID
@@ -733,38 +723,32 @@ WHERE
     
 # QUERY 3
 SELECT 
-    firstName, lastName
+    CONCAT(firstName," ",lastName) AS 'Patients who are volunteers'
 FROM
     Patient
         INNER JOIN
-    Volunteer ON Patient.patientID = Volunteer.volunteerID
+    Volunteer ON patientID = volunteerID
         INNER JOIN
-    Person ON Volunteer.volunteerID = Person.personID;
+    Person ON volunteerID = personID;
 
 # QUERY 4
 SELECT 
-    firstName, lastName
+    CONCAT(firstName," ",lastName) AS 'Outpatients visited exactly once'
 FROM
     Visit
         INNER JOIN
-    Person ON Visit.patientID = Person.personID
-GROUP BY firstName, lastName
+    Person ON patientID = personID
+GROUP BY CONCAT(firstName," ",lastName)
 HAVING COUNT(patientID) = 1;
 
-# QUERY 5 fix
-select * from VolunteerSkills
-        left OUTER JOIN
-    VolunteerVolunteerSkills ON VolunteerVolunteerSkills.skillName = VolunteerSkills.skillName;
-
-select * from VolunteerSkills;
-insert into VolunteerSkills (skillName) values ('skill');
+# QUERY 5
 SELECT 
     VolunteerSkills.skillName,
     COUNT(VolunteerVolunteerSkills.skillName)
 FROM
     VolunteerSkills
-        left OUTER JOIN
-    VolunteerVolunteerSkills ON VolunteerVolunteerSkills.skillName = VolunteerSkills.skillName
+        LEFT OUTER JOIN
+    VolunteerVolunteerSkills ON VolunteerSkills.skillName = VolunteerVolunteerSkills.skillName
 GROUP BY VolunteerSkills.skillName 
 UNION ALL
 SELECT 
@@ -772,25 +756,25 @@ SELECT
     COUNT(TechnicianTechnicialSkills.skillName)
 FROM
     TechnicianTechnicialSkills
-        RIGHT OUTER JOIN
+        LEFT OUTER JOIN
     TechnicalSkills ON TechnicianTechnicialSkills.skillName = TechnicalSkills.skillName
 GROUP BY TechnicalSkills.skillName;
 
 # QUERY 6
 SELECT 
-    careCenterName
+    careCenterName AS 'Care Centers with no empty beds'
 FROM
-    CareCenterBedStatus
+    CareCenter_TotalBeds_FilledBeds
 WHERE
     totalBeds - filledBeds = 0;
     
 # QUERY 7
 SELECT 
-    firstName, lastName
+    CONCAT(firstName," ",lastName) AS 'Registered Nurses not in charge of a Care Center'
 FROM
     Nurse
         INNER JOIN
-    Person ON Nurse.nurseID = Person.personID
+    Person ON nurseID = personID
 WHERE
     certificate = TRUE
         AND nurseID NOT IN (SELECT 
@@ -800,15 +784,16 @@ WHERE
     
 # QUERY 8
 SELECT 
-    firstName, lastName, CareCenter.careCenterName
+    CareCenter.careCenterName AS 'Care Center',
+    CONCAT(firstName,' ',lastName) AS 'Nurse in charge who also works there'
 FROM
     Nurse
         INNER JOIN
     CareCenter ON Nurse.careCenterName = CareCenter.careCenterName
         INNER JOIN
-    Person ON Nurse.nurseID = Person.personID
+    Person ON nurseID = personID
 WHERE
-    Nurse.nurseID = CareCenter.headNurseID;
+    nurseID = headNurseID;
 
 # QUERY 9
 SELECT 
@@ -832,7 +817,7 @@ WHERE
 
 # QUERY 10
 SELECT 
-    firstName, lastName, admittedDate
+    firstName,lastName,admittedDate
 FROM
     Resident
         INNER JOIN
@@ -845,7 +830,7 @@ WHERE
     
 # QUERY 11
 SELECT 
-    firstName, lastName, contactDate, admittedDate
+    firstName,lastName,contactDate,admittedDate
 FROM
     Patient
         INNER JOIN
@@ -857,7 +842,7 @@ WHERE
 
 # QUERY 12
 SELECT 
-    firstName, lastName
+    firstName,lastName
 FROM
     Patient
         INNER JOIN
@@ -869,7 +854,7 @@ WHERE
             Visit) 
 UNION
 SELECT 
-    firstName, lastName
+    firstName,lastName
 FROM
     Patient
         INNER JOIN
@@ -881,19 +866,19 @@ WHERE
 
 # QUERY 13 NEEDS BETTER DATA
 SELECT 
-    firstName, lastName, visitDate
+    firstName,lastName,visitDate
 FROM
     Physician
         INNER JOIN
     Visit ON Physician.physicianID = Visit.physicianID
         INNER JOIN
     Person ON Physician.physicianID = personID
-GROUP BY Physician.physicianID , visitDate
+GROUP BY Physician.physicianID ,visitDate
 HAVING COUNT(Visit.physicianID) > 3;
 
 # QUERY 14
 SELECT 
-    firstName, lastName, numResidentPatients, numOutpatients
+    firstName,lastName,numResidentPatients,numOutpatients
 FROM
     (SELECT 
         Physician.physicianID,
@@ -912,7 +897,7 @@ WHERE
 
 # QUERY 15 (should I have select distinct?)
 SELECT DISTINCT
-    firstName, lastName
+    firstName,lastName
 FROM
     Visit
         INNER JOIN
@@ -924,7 +909,7 @@ WHERE
 
 # QUERY 16 (Show all the surgeries where the surgeon was not the patient's treating physician)
 SELECT 
-    firstName, lastName
+    firstName,lastName
 FROM
     Surgery
         INNER JOIN
@@ -934,9 +919,9 @@ FROM
 WHERE
     Surgery.surgeonID != Patient.treatingPhysicianID;
 
-# QUERY 17 (Show the ID, first name, and last name for the Pharmacist who fills a prescription for a simple painkiller (Ibuprofen or acetaminophen))
+# QUERY 17 (Show the ID,first name,and last name for the Pharmacist who fills a prescription for a simple painkiller (Ibuprofen or acetaminophen))
 SELECT 
-    Prescription.physicianID, firstName, lastName, drugName
+    Prescription.physicianID,firstName,lastName,drugName
 FROM
     Prescription
         INNER JOIN
@@ -949,7 +934,7 @@ WHERE
 
 # QUERY 18 (Show the lab and it's head technician if that head technician has 2 or more skills)
 SELECT 
-    firstName, lastName, Laboratory.labName
+    firstName,lastName,Laboratory.labName
 FROM
     TechnicianTechnicialSkills
         RIGHT OUTER JOIN
@@ -980,7 +965,7 @@ BEGIN
     DECLARE existingState VARCHAR(2);
     
 	SELECT 
-		city, state INTO existingCity , existingState
+		city,state INTO existingCity ,existingState
 	FROM
 		Person
 	WHERE
@@ -988,7 +973,7 @@ BEGIN
         
     IF (existingCity != NEW.city OR existingState != NEW.state) THEN
 		BEGIN
-			SET message = concat("Invalid city or state for zipcode ", NEW.zipCode);
+			SET message = concat("Invalid city or state for zipcode ",NEW.zipCode);
 			SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = message;
 		END;
 	END IF;
@@ -1010,7 +995,7 @@ BEGIN
         
     IF (!isDrugInStock) THEN
 		BEGIN
-			SET message = concat(NEW.drugName, " is not in stock!");
+			SET message = concat(NEW.drugName," is not in stock!");
 			SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = message;
 		END;
 	END IF;
@@ -1032,7 +1017,7 @@ BEGIN
         
     IF (!certifiedNurse) THEN
 		BEGIN
-			SET message = concat(NEW.nurseID, " is not certified to be a RN!");
+			SET message = concat(NEW.nurseID," is not certified to be a RN!");
 			SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = message;
 		END;
 	END IF;
@@ -1040,17 +1025,17 @@ END;$$
 DELIMITER ;
 
 # Test cecs323bg10.zipCode_BEFORE_INSERT trigger
-SELECT city, state, zipCode FROM Person WHERE zipCode = '90630';
+SELECT city,state,zipCode FROM Person WHERE zipCode = '90630';
 INSERT INTO Person (personID,firstName,lastName,birthDate,phone,streetAddress,city,state,zipCode)
 	VALUES ('99999','Cletus','Hammer','1985-10-23','4930579033','5898 Jilian St','Narnia','CA','90630');
 
 # Test cecs323bg10.registeredNurse_BEFORE_INSERT trigger
-SELECT nurseID, certificate FROM Nurse WHERE nurseID = '00002';
+SELECT nurseID,certificate FROM Nurse WHERE nurseID = '00002';
 INSERT INTO RegisteredNurse (nurseID) VALUES ('00002');
 
 # Test cecs323bg10.prescription_BEFORE_INSERT trigger
-SELECT drugName, inStock FROM Inventory WHERE drugName = 'Vicodin';
-INSERT INTO Prescription (pharmacistID, patientID, physicianID, drugName, visitDate, units, quantity)
+SELECT drugName,inStock FROM Inventory WHERE drugName = 'Vicodin';
+INSERT INTO Prescription (pharmacistID,patientID,physicianID,drugName,visitDate,units,quantity)
 	VALUES ('00010','00030','00025','Vicodin','2014-08-14','milligrams','20');
 
 #select * from information_schema.triggers where trigger_schema = 'whatever';
@@ -1099,7 +1084,7 @@ DROP TABLE State;
 
 /*---------------------- NOTES ----------------------*/
 # make after insert for registered nurse insert
-# make triggers for date sensitive inserts, no future dates
+# make triggers for date sensitive inserts,no future dates
 # make trigger to limit number of beds in a room
 # make trigger to enforce admittedDate for resident patient is on or after contactDate
 # make trigger to prevent employees from being too young
