@@ -595,38 +595,41 @@ INSERT INTO VolunteerVolunteerSkills (volunteerID,skillName) VALUES ('00013','Cu
 
 /*---------------------- VIEWS ----------------------*/
 
-# AUXILIARY VIEWS 
+# AUXILIARY VIEWS
+
 CREATE VIEW TotalBeds AS
     SELECT 
         CareCenter.careCenterName, COUNT(bedNumber) AS 'totalBeds'
     FROM
         CareCenter
             INNER JOIN
-        Bed ON CareCenter.careCenterName = Bed.careCenterName
+        Room ON CareCenter.careCenterName = Room.careCenterName
+            INNER JOIN
+        Bed ON Room.careCenterName = Bed.careCenterName
     GROUP BY CareCenter.careCenterName;
 
-CREATE VIEW EmptyBeds AS
+CREATE VIEW FilledBeds AS
     SELECT 
-        CareCenter.careCenterName, COUNT(bedNumber) AS 'emptyBeds'
+        CareCenter.careCenterName, COUNT(bedNumber) AS 'filledBeds'
     FROM
         CareCenter
             INNER JOIN
-        Bed ON CareCenter.careCenterName = Bed.careCenterName
+        Room ON CareCenter.careCenterName = Room.careCenterName
+            INNER JOIN
+        Bed ON Room.careCenterName = Bed.careCenterName
     WHERE
-        patientID IS NULL
+        Bed.patientID IS NOT NULL
     GROUP BY CareCenter.careCenterName;
 
-CREATE VIEW OccupiedBeds AS
+CREATE VIEW CareCenterBedStatus AS
     SELECT 
-        CareCenter.careCenterName,
-        COUNT(bedNumber) AS 'occupiedBeds'
+        careCenterName,
+        totalBeds,
+        IF(filledBeds IS NULL, 0, filledBeds) filledBeds
     FROM
-        CareCenter
-            INNER JOIN
-        Bed ON CareCenter.careCenterName = Bed.careCenterName
-    WHERE
-        patientID IS NOT NULL
-    GROUP BY CareCenter.careCenterName;
+        TotalBeds
+            LEFT OUTER JOIN
+        FilledBeds USING (careCenterName);
 
 # REQUIRED VIEWS
 
@@ -657,7 +660,7 @@ CREATE VIEW GoodTechnician AS
             INNER JOIN
         Person ON TechnicianTechnicialSkills.technicianID = Person.personID;
 	
-# VIEW 4
+# VIEW 4 FIX THIS
 CREATE VIEW CareCenterBeds AS
     SELECT 
         TotalBeds.careCenterName,
@@ -686,6 +689,26 @@ CREATE VIEW OutPatientsNotVisited AS
                 Visit);
 
 /*---------------------- QUERIES ----------------------*/
+SELECT 
+    *
+FROM
+    EmployeeHired;
+SELECT 
+    *
+FROM
+    NursesInCharge;
+SELECT 
+    *
+FROM
+    GoodTechnician;
+SELECT 
+    *
+FROM
+    CareCenterBeds;
+SELECT 
+    *
+FROM
+    OutPatientsNotVisited;
 
 # QUERY 1
 SELECT 
@@ -725,17 +748,23 @@ FROM
     Visit
         INNER JOIN
     Person ON Visit.patientID = Person.personID
-GROUP BY firstName , lastName
+GROUP BY firstName, lastName
 HAVING COUNT(patientID) = 1;
 
-# QUERY 5
+# QUERY 5 fix
+select * from VolunteerSkills
+        left OUTER JOIN
+    VolunteerVolunteerSkills ON VolunteerVolunteerSkills.skillName = VolunteerSkills.skillName;
+
+select * from VolunteerSkills;
+insert into VolunteerSkills (skillName) values ('skill');
 SELECT 
     VolunteerSkills.skillName,
     COUNT(VolunteerVolunteerSkills.skillName)
 FROM
-    VolunteerVolunteerSkills
-        RIGHT OUTER JOIN
-    VolunteerSkills ON VolunteerVolunteerSkills.skillName = VolunteerSkills.skillName
+    VolunteerSkills
+        left OUTER JOIN
+    VolunteerVolunteerSkills ON VolunteerVolunteerSkills.skillName = VolunteerSkills.skillName
 GROUP BY VolunteerSkills.skillName 
 UNION ALL
 SELECT 
@@ -751,9 +780,9 @@ GROUP BY TechnicalSkills.skillName;
 SELECT 
     careCenterName
 FROM
-    EmptyBeds
+    CareCenterBedStatus
 WHERE
-    emptyBeds = 0;
+    totalBeds - filledBeds = 0;
     
 # QUERY 7
 SELECT 
